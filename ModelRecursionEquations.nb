@@ -1,0 +1,3075 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    133167,       3067]
+NotebookOptionsPosition[    128724,       3009]
+NotebookOutlinePosition[    129163,       3026]
+CellTagsIndexPosition[    129120,       3023]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "Define", " ", "model", " ", "parameters", " ", "and", " ", "recursions"}],
+    "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"u1", "=", 
+    RowBox[{"v1", "=", "1"}]}], "\n", 
+   RowBox[{"u2", "=", 
+    RowBox[{"v2", "=", 
+     RowBox[{"1", "-", 
+      RowBox[{"ha", "*", "sa"}]}]}]}], "\n", 
+   RowBox[{"u3", "=", 
+    RowBox[{"v3", "=", 
+     RowBox[{"1", "-", "sa"}]}]}], "\n", 
+   RowBox[{"u4", "=", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", 
+      RowBox[{"hsr", "*", "ssr"}]}], ")"}]}], "\n", 
+   RowBox[{"u5", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"hsr", "*", "ssr"}]}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"ha", "*", "sa"}]}], ")"}]}]}], "\n", 
+   RowBox[{"u6", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"hsr", "*", "ssr"}]}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "sa"}], ")"}]}]}], "\n", 
+   RowBox[{"u7", "=", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", "ssr"}], ")"}]}], "\n", 
+   RowBox[{"u8", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "ssr"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"ha", "*", "sa"}]}], ")"}]}]}], "\n", 
+   RowBox[{"u9", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "ssr"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "sa"}], ")"}]}]}], "\n", 
+   RowBox[{"v4", "=", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", "ssrm"}], ")"}]}], "\n", 
+   RowBox[{"v5", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "ssrm"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"ha", "*", "sa"}]}], ")"}]}]}], "\n", 
+   RowBox[{"v6", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "ssrm"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "sa"}], ")"}]}]}], "\n", 
+   RowBox[{"v7", "=", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", "sy"}], ")"}]}], "\n", 
+   RowBox[{"v8", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "sy"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"ha", "*", "sa"}]}], ")"}]}]}], "\n", 
+   RowBox[{"v9", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "sy"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "sa"}], ")"}]}]}], "\n", 
+   RowBox[{"v10", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "ssrm"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "sy"}], ")"}]}]}], "\n", 
+   RowBox[{"v11", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "ssrm"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "sy"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       RowBox[{"ha", "*", "sa"}]}], ")"}]}]}], "\n", 
+   RowBox[{"v12", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "ssrm"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "sy"}], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "sa"}], ")"}]}]}], "\n", 
+   RowBox[{"T", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v12", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}], "+", 
+         RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q8", "/", "4"}], "+", 
+         RowBox[{"q9", "/", "2"}], "+", 
+         RowBox[{"q11", "/", "4"}], "+", 
+         RowBox[{"q12", "/", "2"}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"v11", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+            RowBox[{"p8", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}], "+", 
+            RowBox[{"q12", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}], "+", 
+            RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q10", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"v10", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p4", "/", "2"}], "+", 
+         RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+         RowBox[{"p8", "/", "2"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q7", "/", "2"}], "+", 
+         RowBox[{"q8", "/", "4"}], "+", 
+         RowBox[{"q10", "/", "2"}], "+", 
+         RowBox[{"q11", "/", "4"}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"v9", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q8", "/", "4"}], "+", 
+         RowBox[{"q9", "/", "2"}], "+", 
+         RowBox[{"q11", "/", "4"}], "+", 
+         RowBox[{"q12", "/", "2"}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"v8", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p1", "+", 
+            RowBox[{"p2", "/", "2"}], "+", 
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}], "+", 
+            RowBox[{"q12", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q10", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"v7", 
+       RowBox[{"(", 
+        RowBox[{"p1", "+", 
+         RowBox[{"p2", "/", "2"}], "+", 
+         RowBox[{"p4", "/", "2"}], "+", 
+         RowBox[{"p5", "/", "4"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q7", "/", "2"}], "+", 
+         RowBox[{"q8", "/", "4"}], "+", 
+         RowBox[{"q10", "/", "2"}], "+", 
+         RowBox[{"q11", "/", "4"}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"v6", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}], "+", 
+         RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{"q3", "/", "2"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "4"}], ")"}], "-", 
+            RowBox[{"(", 
+             RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q6"}]}], 
+        ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"v5", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}], "+", 
+            RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q4"}], 
+            "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "-", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}]}], ")"}]}], 
+         "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+            RowBox[{"p8", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "-", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q6"}]}], 
+           ")"}]}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"v4", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p4", "/", "2"}], "+", 
+         RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+         RowBox[{"p8", "/", "2"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q1", "/", "2"}], "+", 
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q4"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "4"}], ")"}], "-", 
+            RowBox[{"(", 
+             RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}]}], ")"}]}], 
+      ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"v3", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{"q3", "/", "2"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "4"}], ")"}], "-", 
+            RowBox[{"(", 
+             RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q6"}]}], 
+        ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"v2", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p1", "+", 
+            RowBox[{"p2", "/", "2"}], "+", 
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "-", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q6"}]}], 
+           ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q4"}], 
+            "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "-", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}]}], ")"}]}]}], 
+        ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"v1", 
+       RowBox[{"(", 
+        RowBox[{"p1", "+", 
+         RowBox[{"p2", "/", "2"}], "+", 
+         RowBox[{"p4", "/", "2"}], "+", 
+         RowBox[{"p5", "/", "4"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q1", "/", "2"}], "+", 
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q4"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "4"}], ")"}], "-", 
+            RowBox[{"(", 
+             RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}]}], ")"}]}], 
+      ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"u9", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}], "+", 
+         RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "4"}], ")"}], "+", 
+            RowBox[{"(", 
+             RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q6"}], "+", 
+         RowBox[{"q11", "/", "4"}], "+", 
+         RowBox[{"q12", "/", "2"}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"u8", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+            RowBox[{"p8", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q6"}], 
+            "+", 
+            RowBox[{"q11", "/", "4"}], "+", 
+            RowBox[{"q12", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}], "+", 
+            RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q4"}], 
+            "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{"q10", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"u7", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"p4", "/", "2"}], "+", 
+           RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+           RowBox[{"p8", "/", "2"}]}], ")"}], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q4"}], "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "/", "4"}], ")"}], "+", 
+              RowBox[{"(", 
+               RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+           RowBox[{"q10", "/", "2"}], "+", 
+           RowBox[{"q11", "/", "4"}]}], ")"}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"u6", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q6"}], 
+            "+", 
+            RowBox[{"q11", "/", "4"}], "+", 
+            RowBox[{"q12", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}], "+", 
+            RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"u5", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p1", "+", 
+            RowBox[{"p2", "/", "2"}], "+", 
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q6"}], 
+            "+", 
+            RowBox[{"q11", "/", "4"}], "+", 
+            RowBox[{"q12", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+            RowBox[{"p8", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q4"}], 
+            "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{"q10", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}], "+", 
+            RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"u4", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p1", "+", 
+            RowBox[{"p2", "/", "2"}], "+", 
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q4"}], 
+            "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{"q10", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+            RowBox[{"p8", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"u3", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{"q3", "/", "2"}], "+", 
+         RowBox[{"q8", "/", "4"}], "+", 
+         RowBox[{"q9", "/", "2"}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"u2", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p1", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"p2", "/", "2"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"p2", "/", "2"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}], "+", 
+         RowBox[{"p3", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}], "+", 
+         RowBox[{"p4", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"p5", "/", "4"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"p5", "/", "4"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}], "+", 
+         RowBox[{"p6", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "+", 
+     RowBox[{"(", 
+      RowBox[{"u1", 
+       RowBox[{"(", 
+        RowBox[{"p1", "+", 
+         RowBox[{"p2", "/", "2"}], "+", 
+         RowBox[{"p4", "/", "2"}], "+", 
+         RowBox[{"p5", "/", "4"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q1", "/", "2"}], "+", 
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{"q7", "/", "2"}], "+", 
+         RowBox[{"q8", "/", "4"}]}], ")"}]}], ")"}]}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"q12next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v12", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}], "+", 
+         RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q8", "/", "4"}], "+", 
+         RowBox[{"q9", "/", "2"}], "+", 
+         RowBox[{"q11", "/", "4"}], "+", 
+         RowBox[{"q12", "/", "2"}]}], ")"}]}], ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"q11next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v11", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+            RowBox[{"p8", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}], "+", 
+            RowBox[{"q12", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}], "+", 
+            RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q10", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "/", 
+     "T"}]}], "\n", 
+   RowBox[{"q10next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v10", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p4", "/", "2"}], "+", 
+         RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+         RowBox[{"p8", "/", "2"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q7", "/", "2"}], "+", 
+         RowBox[{"q8", "/", "4"}], "+", 
+         RowBox[{"q10", "/", "2"}], "+", 
+         RowBox[{"q11", "/", "4"}]}], ")"}]}], ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"q9next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v9", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q8", "/", "4"}], "+", 
+         RowBox[{"q9", "/", "2"}], "+", 
+         RowBox[{"q11", "/", "4"}], "+", 
+         RowBox[{"q12", "/", "2"}]}], ")"}]}], ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"q8next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v8", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p1", "+", 
+            RowBox[{"p2", "/", "2"}], "+", 
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}], "+", 
+            RowBox[{"q12", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q10", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "/", 
+     "T"}]}], "\n", 
+   RowBox[{"q7next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v7", 
+       RowBox[{"(", 
+        RowBox[{"p1", "+", 
+         RowBox[{"p2", "/", "2"}], "+", 
+         RowBox[{"p4", "/", "2"}], "+", 
+         RowBox[{"p5", "/", "4"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q7", "/", "2"}], "+", 
+         RowBox[{"q8", "/", "4"}], "+", 
+         RowBox[{"q10", "/", "2"}], "+", 
+         RowBox[{"q11", "/", "4"}]}], ")"}]}], ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"q6next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v6", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}], "+", 
+         RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{"q3", "/", "2"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "4"}], ")"}], "-", 
+            RowBox[{"(", 
+             RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q6"}]}], 
+        ")"}]}], ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"q5next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v5", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}], "+", 
+            RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q4"}], 
+            "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "-", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}]}], ")"}]}], 
+         "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+            RowBox[{"p8", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "-", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q6"}]}], 
+           ")"}]}]}], ")"}]}], ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"q4next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v4", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p4", "/", "2"}], "+", 
+         RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+         RowBox[{"p8", "/", "2"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q1", "/", "2"}], "+", 
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q4"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "4"}], ")"}], "-", 
+            RowBox[{"(", 
+             RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}]}], ")"}]}], 
+      ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"q3next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v3", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{"q3", "/", "2"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "4"}], ")"}], "-", 
+            RowBox[{"(", 
+             RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q6"}]}], 
+        ")"}]}], ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"q2next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v2", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p1", "+", 
+            RowBox[{"p2", "/", "2"}], "+", 
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "-", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q6"}]}], 
+           ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q4"}], 
+            "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "-", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}]}], ")"}]}]}], 
+        ")"}]}], ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"q1next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"v1", 
+       RowBox[{"(", 
+        RowBox[{"p1", "+", 
+         RowBox[{"p2", "/", "2"}], "+", 
+         RowBox[{"p4", "/", "2"}], "+", 
+         RowBox[{"p5", "/", "4"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q1", "/", "2"}], "+", 
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "2"}], ")"}], "-", "d"}], ")"}], "q4"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "4"}], ")"}], "-", 
+            RowBox[{"(", 
+             RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}]}], ")"}]}], 
+      ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"p9next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"u9", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}], "+", 
+         RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "4"}], ")"}], "+", 
+            RowBox[{"(", 
+             RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q6"}], "+", 
+         RowBox[{"q11", "/", "4"}], "+", 
+         RowBox[{"q12", "/", "2"}]}], ")"}]}], ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"p8next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"u8", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+            RowBox[{"p8", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q6"}], 
+            "+", 
+            RowBox[{"q11", "/", "4"}], "+", 
+            RowBox[{"q12", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}], "+", 
+            RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q4"}], 
+            "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{"q10", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "/", 
+     "T"}]}], "\n", 
+   RowBox[{"p7next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"u7", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"p4", "/", "2"}], "+", 
+           RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+           RowBox[{"p8", "/", "2"}]}], ")"}], 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q4"}], "+", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{"1", "/", "4"}], ")"}], "+", 
+              RowBox[{"(", 
+               RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+           RowBox[{"q10", "/", "2"}], "+", 
+           RowBox[{"q11", "/", "4"}]}], ")"}]}], ")"}]}], ")"}], "/", "T"}]}],
+    "\n", 
+   RowBox[{"p6next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"u6", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q6"}], 
+            "+", 
+            RowBox[{"q11", "/", "4"}], "+", 
+            RowBox[{"q12", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}], "+", 
+            RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}]}], ")"}]}], ")"}], "/", 
+     "T"}]}], "\n", 
+   RowBox[{"p5next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"u5", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p1", "+", 
+            RowBox[{"p2", "/", "2"}], "+", 
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q6"}], 
+            "+", 
+            RowBox[{"q11", "/", "4"}], "+", 
+            RowBox[{"q12", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+            RowBox[{"p8", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q4"}], 
+            "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{"q10", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p5", "/", "4"}], "+", 
+            RowBox[{"p6", "/", "2"}], "+", 
+            RowBox[{"p8", "/", "2"}], "+", "p9"}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "/", 
+     "T"}]}], "\n", 
+   RowBox[{"p4next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"u4", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"p1", "+", 
+            RowBox[{"p2", "/", "2"}], "+", 
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "2"}], ")"}], "+", "d"}], ")"}], "q4"}], 
+            "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"1", "/", "4"}], ")"}], "+", 
+               RowBox[{"(", 
+                RowBox[{"d", "/", "2"}], ")"}]}], ")"}], "q5"}], "+", 
+            RowBox[{"q10", "/", "2"}], "+", 
+            RowBox[{"q11", "/", "4"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"p4", "/", "2"}], "+", 
+            RowBox[{"p5", "/", "4"}], "+", "p7", "+", 
+            RowBox[{"p8", "/", "2"}]}], ")"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "/", 
+     "T"}]}], "\n", 
+   RowBox[{"p3next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"u3", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p2", "/", "2"}], "+", "p3", "+", 
+         RowBox[{"p5", "/", "4"}], "+", 
+         RowBox[{"p6", "/", "2"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{"q3", "/", "2"}], "+", 
+         RowBox[{"q8", "/", "4"}], "+", 
+         RowBox[{"q9", "/", "2"}]}], ")"}]}], ")"}], "/", "T"}]}], "\n", 
+   RowBox[{"p2next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"u2", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"p1", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"p2", "/", "2"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"p2", "/", "2"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}], "+", 
+         RowBox[{"p3", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}], "+", 
+         RowBox[{"p4", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"p5", "/", "4"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q3", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}], "+", 
+            RowBox[{"q9", "/", "2"}]}], ")"}]}], "+", 
+         RowBox[{
+          RowBox[{"p5", "/", "4"}], 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}], "+", 
+         RowBox[{"p6", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"q1", "/", "2"}], "+", 
+            RowBox[{"q2", "/", "4"}], "+", 
+            RowBox[{"q7", "/", "2"}], "+", 
+            RowBox[{"q8", "/", "4"}]}], ")"}]}]}], ")"}]}], ")"}], "/", 
+     "T"}]}], "\n", 
+   RowBox[{"p1next", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"u1", 
+       RowBox[{"(", 
+        RowBox[{"p1", "+", 
+         RowBox[{"p2", "/", "2"}], "+", 
+         RowBox[{"p4", "/", "2"}], "+", 
+         RowBox[{"p5", "/", "4"}]}], ")"}], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q1", "/", "2"}], "+", 
+         RowBox[{"q2", "/", "4"}], "+", 
+         RowBox[{"q7", "/", "2"}], "+", 
+         RowBox[{"q8", "/", "4"}]}], ")"}]}], ")"}], "/", "T"}]}], 
+   "\n"}]}]], "Input",
+ CellChangeTimes->{{3.891012827321808*^9, 3.891012874811028*^9}, {
+   3.891012911035362*^9, 3.8910130320685463`*^9}, {3.891013149896677*^9, 
+   3.891013418053617*^9}, {3.89101357844342*^9, 3.891013650235339*^9}, {
+   3.891014110296427*^9, 3.891014132631129*^9}, {3.89101426373335*^9, 
+   3.891014321229588*^9}, {3.8910220677557774`*^9, 3.891022095627005*^9}, {
+   3.8910221298108*^9, 3.891022157572611*^9}, {3.891022391588207*^9, 
+   3.8910223916532097`*^9}, {3.891022424458782*^9, 3.8910224863199778`*^9}, {
+   3.891022607982005*^9, 3.891022661287794*^9}, {3.891022994812944*^9, 
+   3.8910230266979213`*^9}, 3.891335931705592*^9, {3.891336056395988*^9, 
+   3.8913361232929783`*^9}, {3.891336215927968*^9, 3.891336248430535*^9}, {
+   3.89133634589689*^9, 3.891336383176566*^9}, {3.891336776527215*^9, 
+   3.8913367856271377`*^9}, {3.891336919857289*^9, 3.891336998489245*^9}, {
+   3.891337056637039*^9, 3.891337079507058*^9}, {3.891548861789188*^9, 
+   3.8915492068553066`*^9}, 3.891549268021664*^9, 3.895106388321124*^9, {
+   3.918601074333276*^9, 
+   3.918601078597919*^9}},ExpressionUUID->"6f4e2ae9-e281-424f-956f-\
+fc178a674ddd"],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.895106449822177*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"ed01f1ba-5487-4d4f-a2a5-90af7371a4ab"],
+
+Cell[BoxData[
+ RowBox[{"1", "-", 
+  RowBox[{"ha", " ", "sa"}]}]], "Output",
+ CellChangeTimes->{3.895106449829067*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"67027faf-83a0-4c24-b98f-1d11d85c2fad"],
+
+Cell[BoxData[
+ RowBox[{"1", "-", "sa"}]], "Output",
+ CellChangeTimes->{3.895106449838707*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"0d463618-5ee3-442a-a43f-cfd7380fb7c7"],
+
+Cell[BoxData[
+ RowBox[{"1", "-", 
+  RowBox[{"hsr", " ", "ssr"}]}]], "Output",
+ CellChangeTimes->{3.895106449838707*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"581f8b07-c21e-40ce-98d6-ea193c318c2b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "-", 
+    RowBox[{"ha", " ", "sa"}]}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", 
+    RowBox[{"hsr", " ", "ssr"}]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.895106449838707*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"deb37fde-09f5-459a-8f7e-11094b603027"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "-", "sa"}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", 
+    RowBox[{"hsr", " ", "ssr"}]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.895106449838707*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"5f6daece-0e7e-4016-9ea3-8ed82d0ff70d"],
+
+Cell[BoxData[
+ RowBox[{"1", "-", "ssr"}]], "Output",
+ CellChangeTimes->{3.895106449838707*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"d776702b-ca75-4321-b8c3-addfefbd9537"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "-", 
+    RowBox[{"ha", " ", "sa"}]}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", "ssr"}], ")"}]}]], "Output",
+ CellChangeTimes->{3.895106449854097*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"71644ded-d961-40c2-9bb9-78c8f09d3f88"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "-", "sa"}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", "ssr"}], ")"}]}]], "Output",
+ CellChangeTimes->{3.895106449854097*^9},
+ CellLabel->"Out[9]=",ExpressionUUID->"8a179022-d329-42a9-b6d0-9447acb4f5de"],
+
+Cell[BoxData[
+ RowBox[{"1", "-", "ssrm"}]], "Output",
+ CellChangeTimes->{3.895106449854097*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"01341495-7c3d-422b-8fbb-db7144ce73c8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "-", 
+    RowBox[{"ha", " ", "sa"}]}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", "ssrm"}], ")"}]}]], "Output",
+ CellChangeTimes->{3.895106449854097*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"d079626e-d144-43ad-b3a6-0f5af889ff02"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "-", "sa"}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", "ssrm"}], ")"}]}]], "Output",
+ CellChangeTimes->{3.895106449854097*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"a69c17c6-46bd-4bcc-831a-9064949d5238"],
+
+Cell[BoxData[
+ RowBox[{"1", "-", "sy"}]], "Output",
+ CellChangeTimes->{3.895106449870099*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"5c7a9cd1-f538-41f8-bcee-1676aac8a84c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "-", 
+    RowBox[{"ha", " ", "sa"}]}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", "sy"}], ")"}]}]], "Output",
+ CellChangeTimes->{3.895106449870099*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"46261346-4149-4bf8-80ff-db7a74646bb7"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "-", "sa"}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", "sy"}], ")"}]}]], "Output",
+ CellChangeTimes->{3.895106449870099*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"fdb2bfeb-415b-494c-bef5-2821e77bdc98"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "-", "ssrm"}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", "sy"}], ")"}]}]], "Output",
+ CellChangeTimes->{3.895106449870099*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"7b182e80-6695-44aa-9fa4-171f0459b70b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "-", 
+    RowBox[{"ha", " ", "sa"}]}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", "ssrm"}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", "sy"}], ")"}]}]], "Output",
+ CellChangeTimes->{3.895106449870099*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"a4fe0b9a-ec0f-4eba-b6c3-69e50d8caa01"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{"1", "-", "sa"}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", "ssrm"}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", "sy"}], ")"}]}]], "Output",
+ CellChangeTimes->{3.895106449885612*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"070e1f22-995e-4a5d-8b73-0cd5b5daab19"],
+
+Cell["\<\
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + (p1 \
++ p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+  (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+   (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - \
+d/2)*q5) + 
+    (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+  ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+    p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+    (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+  (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+  ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+     (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+  ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+   (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + d/2)*q5 \
++ (1/2 + d)*q6) + 
+    (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+  ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+     (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+    (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+  (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+  (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+  ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+     (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+  (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+  ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+  (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - sy) \
++ (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*
+   (1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + q7/2 + \
+q8/4) + (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*
+   (1 - ha*sa)*(1 - ssrm)*(1 - sy)\
+\>", "Output",
+ CellChangeTimes->{{3.895106449901517*^9, 3.89510647827433*^9}, 
+   3.895106956789354*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"b70d070f-1dda-4981-a1a4-df0e10c4a8a0"],
+
+Cell["\<\
+((p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - \
+ssrm)*(1 - sy))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{
+  3.895106449917396*^9, 3.8951071579844246`*^9, {3.895107200001974*^9, 
+   3.895107222165094*^9}, 3.895107320238065*^9},
+ CellLabel->"Out[20]=",ExpressionUUID->"ba067f96-44db-44fa-8da5-3c892dee24a1"],
+
+Cell["\<\
+(((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + q7/2 + q8/4) + (p4/2 + p5/4 + p7 \
++ p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - ssrm)*
+   (1 - sy))/((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - \
+d/2)*q5) + (p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106449949144*^9, 3.895107356433221*^9},
+ CellLabel->"Out[21]=",ExpressionUUID->"919231fe-a9d6-4567-8874-9debb035aad5"],
+
+Cell["\<\
+((p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - sy))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106449985793*^9, 3.8951073839304*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"f8c56f30-4b70-4e87-b574-b994db12951a"],
+
+Cell["\<\
+((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450012499*^9, 3.895107404613329*^9},
+ CellLabel->"Out[23]=",ExpressionUUID->"de3bfacd-0a34-497e-bab8-94d4e4008d03"],
+
+Cell["\<\
+(((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + p4/2 \
++ p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450059297*^9, 3.895107439204506*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"a97d24d5-4e71-47fe-9999-e5080e2e7d2e"],
+
+Cell["\<\
+((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy))/((p1 + \
+p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+   (p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + (p2/2 + p3 + p5/4 \
++ p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 - sa) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*(1 - sa) + ((p2/2 + \
+p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450085703*^9, 3.8951074647810297`*^9},
+ CellLabel->"Out[25]=",ExpressionUUID->"e0b82c8a-a4ed-4e58-ba33-472837cdbcc8"],
+
+Cell["\<\
+((p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 - \
+sa)*(1 - ssrm))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450106517*^9, 3.8951074885318317`*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"a1ad41a3-4c4a-46e0-ae0a-2f471b01bee6"],
+
+Cell["\<\
+(((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+     (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450137761*^9, 3.8951075100046144`*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"3d17bbdc-20e6-47b2-8426-d40546cf5e52"],
+
+Cell["\<\
+((p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 - \
+ssrm))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.8951064501857667`*^9, 3.895107534257759*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"a7b905ea-c535-4a19-abe2-87f0c45cbe18"],
+
+Cell["\<\
+((p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 - \
+sa))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450248273*^9, 3.895107555515388*^9},
+ CellLabel->"Out[29]=",ExpressionUUID->"933f99ce-6c45-433e-b4a0-c4d03037ef29"],
+
+Cell["\<\
+(((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*
+     (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa))/((p1 + p2/2 \
++ p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+   (p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + (p2/2 + p3 + p5/4 \
++ p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 - sa) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*(1 - sa) + ((p2/2 + \
+p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450279619*^9, 3.895107577335374*^9},
+ CellLabel->"Out[30]=",ExpressionUUID->"972528e7-0321-41e2-a573-9393500961e5"],
+
+Cell["\<\
+((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450311262*^9, 3.895107598506778*^9},
+ CellLabel->"Out[31]=",ExpressionUUID->"1d01abbd-c003-4a2b-b4e5-8e45a0d3c839"],
+
+Cell["\<\
+((p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6)*(1 \
+- sa)*(1 - ssr))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.8951064503581524`*^9, 3.8951076199172707`*^9},
+ CellLabel->"Out[32]=",ExpressionUUID->"5a6e6c03-f1e4-486e-a3b5-a490e6eacb88"],
+
+Cell["\<\
+(((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+     (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450390253*^9, 3.895107637921269*^9},
+ CellLabel->"Out[33]=",ExpressionUUID->"0c8bbad1-599a-47ed-989a-5b830f7eb758"],
+
+Cell["\<\
+((p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 \
+- ssr))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450421749*^9, 3.895107658497504*^9},
+ CellLabel->"Out[34]=",ExpressionUUID->"679e732c-b1f3-4323-a024-55b882ca2661"],
+
+Cell["\<\
+(((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + \
+(p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*
+   (1 - hsr*ssr))/((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + \
+(1/4 - d/2)*q5) + 
+   (p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + (p2/2 + p3 + p5/4 \
++ p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 - sa) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*(1 - sa) + ((p2/2 + \
+p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450452995*^9, 3.895107677536341*^9},
+ CellLabel->"Out[35]=",ExpressionUUID->"fedd8da3-ab10-4b83-b90c-202f594ea27a"],
+
+Cell["\<\
+(((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*
+     (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+    (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr))/
+  ((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa) + (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*
+    (1 - sa) + ((p2/2 + p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 \
+- d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450485555*^9, 3.8951076977474036`*^9},
+ CellLabel->"Out[36]=",ExpressionUUID->"fd796535-2dc9-406a-8a4e-f7f9e288d3d4"],
+
+Cell["\<\
+(((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+   (1 - hsr*ssr))/((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + \
+(1/4 - d/2)*q5) + 
+   (p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + (p2/2 + p3 + p5/4 \
++ p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 - sa) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*(1 - sa) + ((p2/2 + \
+p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.8951064505170813`*^9, 3.8951077279079237`*^9},
+ CellLabel->"Out[37]=",ExpressionUUID->"9c131259-7f61-4320-ab8b-66de9e29d09d"],
+
+Cell["\<\
+((p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*(1 - sa))/((p1 + p2/2 \
++ p4/2 + p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+   (p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + (p2/2 + p3 + p5/4 \
++ p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 - sa) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*(1 - sa) + ((p2/2 + \
+p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450565153*^9, 3.895107751093656*^9},
+ CellLabel->"Out[38]=",ExpressionUUID->"32869ee8-cc46-4fe6-af9c-6ed0bf003393"],
+
+Cell["\<\
+(((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+    p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+    (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa))/((p1 + p2/2 + p4/2 + \
+p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+   (p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + (p2/2 + p3 + p5/4 \
++ p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 - sa) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*(1 - sa) + ((p2/2 + \
+p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450596527*^9, 3.8951077691783695`*^9},
+ CellLabel->"Out[39]=",ExpressionUUID->"e59e2a3b-0a8b-4de7-a3fd-9d201396e956"],
+
+Cell["\<\
+((p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4))/((p1 + p2/2 + p4/2 + \
+p5/4)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+   (p1 + p2/2 + p4/2 + p5/4)*(q1/2 + q2/4 + q7/2 + q8/4) + (p2/2 + p3 + p5/4 \
++ p6/2)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 - sa) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q2/4 + q3/2 + q8/4 + q9/2)*(1 - sa) + ((p2/2 + \
+p3 + p5/4 + p6/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + 
+     (p1 + p2/2 + p4/2 + p5/4)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - \
+d)*q6))*(1 - ha*sa) + 
+   ((1/2)*p2*(q1/2 + q2/4 + q7/2 + q8/4) + p3*(q1/2 + q2/4 + q7/2 + q8/4) + \
+(1/4)*p5*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     p6*(q1/2 + q2/4 + q7/2 + q8/4) + p1*(q2/4 + q3/2 + q8/4 + q9/2) + \
+(1/2)*p2*(q2/4 + q3/2 + q8/4 + q9/2) + p4*(q2/4 + q3/2 + q8/4 + q9/2) + 
+     (1/4)*p5*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa) + (p4/2 + p5/4 + p7 + \
+p8/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5)*(1 - ssr) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + \
+d)*q6)*(1 - sa)*(1 - ssr) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6))*(1 - ha*sa)*(1 - ssr) + 
+   ((p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + q7/2 + q8/4))*
+    (1 - hsr*ssr) + ((p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + (1/4 + \
+d/2)*q5 + (1/2 + d)*q6) + 
+     (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - sa)*(1 - \
+hsr*ssr) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + (1/2 + d)*q4 + (1/4 + d/2)*q5) \
++ (p1 + p2/2 + p4/2 + p5/4)*
+      (q11/4 + q12/2 + (1/4 + d/2)*q5 + (1/2 + d)*q6) + (p5/4 + p6/2 + p8/2 + \
+p9)*(q1/2 + q2/4 + q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q2/4 + q3/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - \
+hsr*ssr) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5)*(1 \
+- ssrm) + 
+   (p5/4 + p6/2 + p8/2 + p9)*(q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6)*(1 \
+- sa)*(1 - ssrm) + 
+   ((p5/4 + p6/2 + p8/2 + p9)*(q1/2 + q2/4 + (1/2 - d)*q4 + (1/4 - d/2)*q5) + \
+(p4/2 + p5/4 + p7 + p8/2)*
+      (q2/4 + q3/2 + (1/4 - d/2)*q5 + (1/2 - d)*q6))*(1 - ha*sa)*(1 - ssrm) + \
+(p1 + p2/2 + p4/2 + p5/4)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - sy) + 
+   (p2/2 + p3 + p5/4 + p6/2)*(q11/4 + q12/2 + q8/4 + q9/2)*(1 - sa)*(1 - sy) + 
+   ((p2/2 + p3 + p5/4 + p6/2)*(q10/2 + q11/4 + q7/2 + q8/4) + (p1 + p2/2 + \
+p4/2 + p5/4)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 - sy) + 
+   (p4/2 + p5/4 + p7 + p8/2)*(q10/2 + q11/4 + q7/2 + q8/4)*(1 - ssrm)*(1 - \
+sy) + (p5/4 + p6/2 + p8/2 + p9)*(q11/4 + q12/2 + q8/4 + q9/2)*
+    (1 - sa)*(1 - ssrm)*(1 - sy) + ((p5/4 + p6/2 + p8/2 + p9)*(q10/2 + q11/4 \
++ q7/2 + q8/4) + 
+     (p4/2 + p5/4 + p7 + p8/2)*(q11/4 + q12/2 + q8/4 + q9/2))*(1 - ha*sa)*(1 \
+- ssrm)*(1 - sy))\
+\>", "Output",
+ CellChangeTimes->{3.895106450628275*^9, 3.895107793546459*^9},
+ CellLabel->"Out[40]=",ExpressionUUID->"544704b0-9745-433c-9d43-bf6852e25b49"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Calculate", " ", "allele", " ", "frequencies"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"XSRm", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+      "q10", "+", "q11", "+", "q12", "+", "q4", "+", "q5", "+", "q6"}], ")"}],
+      "/", 
+     RowBox[{"(", 
+      RowBox[{
+      "q10", "+", "q11", "+", "q12", "+", "q4", "+", "q5", "+", "q6", "+", 
+       "q1", "+", "q2", "+", "q3", "+", "q7", "+", "q8", "+", "q9"}], 
+      ")"}]}]}], " ", "\n", 
+   RowBox[{"XSRf", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"p4", "+", "p5", "+", "p6", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p7", "+", "p8", "+", "p9"}], ")"}]}]}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p1", "+", "p2", "+", "p3"}], ")"}]}], "+", "p4", "+", "p5", 
+       "+", "p6", "+", "p4", "+", "p5", "+", "p6", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p7", "+", "p8", "+", "p9"}], ")"}]}]}], ")"}]}]}], "\n", 
+   RowBox[{"Asupm", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"q11", "+", "q2", "+", "q5", "+", "q8", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"q12", "+", "q3", "+", "q6", "+", "q9"}], ")"}]}]}], ")"}], 
+     "/", 
+     RowBox[{"(", 
+      RowBox[{"q11", "+", "q2", "+", "q5", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"q1", "+", "q10", "+", "q4", "+", "q7"}], ")"}]}], "+", "q8",
+        "+", "q11", "+", "q2", "+", "q5", "+", "q8", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"q12", "+", "q3", "+", "q6", "+", "q9"}], ")"}]}]}], 
+      ")"}]}]}], " ", "\n", 
+   RowBox[{"Asupf", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"p2", "+", "p5", "+", "p8", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p3", "+", "p6", "+", "p9"}], ")"}]}]}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{"p2", "+", "p5", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p1", "+", "p4", "+", "p7"}], ")"}]}], "+", "p8", "+", "p2", 
+       "+", "p5", "+", "p8", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p3", "+", "p6", "+", "p9"}], ")"}]}]}], ")"}]}]}], " ", 
+   "\n", 
+   RowBox[{"Ysup", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+      "q10", "+", "q11", "+", "q12", "+", "q7", "+", "q8", "+", "q9"}], ")"}],
+      "/", 
+     RowBox[{"(", 
+      RowBox[{
+      "q1", "+", "q2", "+", "q3", "+", "q4", "+", "q5", "+", "q6", "+", "q10",
+        "+", "q11", "+", "q12", "+", "q7", "+", "q8", "+", "q9"}], ")"}]}]}], 
+   " ", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"XSRmnext", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+      "q4next", "+", "q5next", "+", "q6next", "+", "q10next", "+", "q11next", 
+       "+", "q12next"}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{
+      "q4next", "+", "q5next", "+", "q6next", "+", "q10next", "+", "q11next", 
+       "+", "q12next", "+", "q1next", "+", "q2next", "+", "q3next", "+", 
+       "q7next", "+", "q8next", "+", "q9next"}], ")"}]}]}], "\n", 
+   RowBox[{"XSRfnext", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"p4next", "+", "p5next", "+", "p6next", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p7next", "+", "p8next", "+", "p9next"}], ")"}]}]}], ")"}], 
+     "/", 
+     RowBox[{"(", 
+      RowBox[{"p4next", "+", "p5next", "+", "p6next", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p7next", "+", "p8next", "+", "p9next"}], ")"}]}], "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p1next", "+", "p2next", "+", "p3next"}], ")"}]}], "+", 
+       "p4next", "+", "p5next", "+", "p6next"}], ")"}]}]}], "\n", 
+   RowBox[{"Asupmnext", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"q2next", "+", "q5next", "+", "q8next", "+", "q11next", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"q3next", "+", "q6next", "+", "q9next", "+", "q12next"}], 
+         ")"}]}]}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{"q2next", "+", "q5next", "+", "q8next", "+", "q11next", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"q3next", "+", "q6next", "+", "q9next", "+", "q12next"}], 
+         ")"}]}], "+", "q2next", "+", "q5next", "+", "q8next", "+", "q11next",
+        "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"q1next", "+", "q4next", "+", "q7next", "+", "q10next"}], 
+         ")"}]}]}], ")"}]}]}], "\n", 
+   RowBox[{"Asupfnext", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"p2next", "+", "p5next", "+", "p8next", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p3next", "+", "p6next", "+", "p9next"}], ")"}]}]}], ")"}], 
+     "/", 
+     RowBox[{"(", 
+      RowBox[{"p2next", "+", "p5next", "+", "p8next", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p3next", "+", "p6next", "+", "p9next"}], ")"}]}], "+", 
+       "p2next", "+", "p5next", "+", "p8next", "+", 
+       RowBox[{"2", "*", 
+        RowBox[{"(", 
+         RowBox[{"p1next", "+", "p4next", "+", "p7next"}], ")"}]}]}], 
+      ")"}]}]}], "\n", 
+   RowBox[{"Ysupnext", "=", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+      "q7next", "+", "q8next", "+", "q9next", "+", "q10next", "+", "q11next", 
+       "+", "q12next"}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{
+      "q7next", "+", "q8next", "+", "q9next", "+", "q10next", "+", "q11next", 
+       "+", "q12next", "+", "q1next", "+", "q2next", "+", "q3next", "+", 
+       "q4next", "+", "q5next", "+", "q6next"}], ")"}]}]}], "\n"}]}]], "Input",
+ CellChangeTimes->{{3.8915507518586936`*^9, 3.891550776267847*^9}, 
+   3.891550817753607*^9, {3.891551173332103*^9, 3.891551268140444*^9}, {
+   3.891554256013999*^9, 3.8915543192218876`*^9}, {3.9186010878451233`*^9, 
+   3.918601113905802*^9}},ExpressionUUID->"14a32edf-297d-459d-87fa-\
+0c4253d1d1be"]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+FrontEndVersion->"14.0 for Mac OS X ARM (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"6ae86cb8-98c3-4d08-80f3-e4bb41e439c5"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 49124, 1468, 1333, "Input",ExpressionUUID->"6f4e2ae9-e281-424f-956f-fc178a674ddd"],
+Cell[49707, 1492, 148, 2, 34, "Output",ExpressionUUID->"ed01f1ba-5487-4d4f-a2a5-90af7371a4ab"],
+Cell[49858, 1496, 195, 4, 34, "Output",ExpressionUUID->"67027faf-83a0-4c24-b98f-1d11d85c2fad"],
+Cell[50056, 1502, 171, 3, 34, "Output",ExpressionUUID->"0d463618-5ee3-442a-a43f-cfd7380fb7c7"],
+Cell[50230, 1507, 197, 4, 34, "Output",ExpressionUUID->"581f8b07-c21e-40ce-98d6-ea193c318c2b"],
+Cell[50430, 1513, 320, 9, 34, "Output",ExpressionUUID->"deb37fde-09f5-459a-8f7e-11094b603027"],
+Cell[50753, 1524, 294, 8, 34, "Output",ExpressionUUID->"5f6daece-0e7e-4016-9ea3-8ed82d0ff70d"],
+Cell[51050, 1534, 172, 3, 34, "Output",ExpressionUUID->"d776702b-ca75-4321-b8c3-addfefbd9537"],
+Cell[51225, 1539, 293, 8, 34, "Output",ExpressionUUID->"71644ded-d961-40c2-9bb9-78c8f09d3f88"],
+Cell[51521, 1549, 267, 7, 34, "Output",ExpressionUUID->"8a179022-d329-42a9-b6d0-9447acb4f5de"],
+Cell[51791, 1558, 174, 3, 34, "Output",ExpressionUUID->"01341495-7c3d-422b-8fbb-db7144ce73c8"],
+Cell[51968, 1563, 295, 8, 34, "Output",ExpressionUUID->"d079626e-d144-43ad-b3a6-0f5af889ff02"],
+Cell[52266, 1573, 269, 7, 34, "Output",ExpressionUUID->"a69c17c6-46bd-4bcc-831a-9064949d5238"],
+Cell[52538, 1582, 172, 3, 34, "Output",ExpressionUUID->"5c7a9cd1-f538-41f8-bcee-1676aac8a84c"],
+Cell[52713, 1587, 293, 8, 34, "Output",ExpressionUUID->"46261346-4149-4bf8-80ff-db7a74646bb7"],
+Cell[53009, 1597, 267, 7, 34, "Output",ExpressionUUID->"fdb2bfeb-415b-494c-bef5-2821e77bdc98"],
+Cell[53279, 1606, 269, 7, 34, "Output",ExpressionUUID->"7b182e80-6695-44aa-9fa4-171f0459b70b"],
+Cell[53551, 1615, 353, 10, 34, "Output",ExpressionUUID->"a4fe0b9a-ec0f-4eba-b6c3-69e50d8caa01"],
+Cell[53907, 1627, 327, 9, 34, "Output",ExpressionUUID->"070e1f22-995e-4a5d-8b73-0cd5b5daab19"],
+Cell[54237, 1638, 2977, 51, 466, "Output",ExpressionUUID->"b70d070f-1dda-4981-a1a4-df0e10c4a8a0"],
+Cell[57217, 1691, 3148, 55, 484, "Output",ExpressionUUID->"ba067f96-44db-44fa-8da5-3c892dee24a1"],
+Cell[60368, 1748, 3135, 53, 484, "Output",ExpressionUUID->"919231fe-a9d6-4567-8874-9debb035aad5"],
+Cell[63506, 1803, 3058, 52, 484, "Output",ExpressionUUID->"f8c56f30-4b70-4e87-b574-b994db12951a"],
+Cell[66567, 1857, 3058, 52, 484, "Output",ExpressionUUID->"de3bfacd-0a34-497e-bab8-94d4e4008d03"],
+Cell[69628, 1911, 3123, 53, 484, "Output",ExpressionUUID->"a97d24d5-4e71-47fe-9999-e5080e2e7d2e"],
+Cell[72754, 1966, 3047, 51, 466, "Output",ExpressionUUID->"e0b82c8a-a4ed-4e58-ba33-472837cdbcc8"],
+Cell[75804, 2019, 3080, 53, 484, "Output",ExpressionUUID->"a1ad41a3-4c4a-46e0-ae0a-2f471b01bee6"],
+Cell[78887, 2074, 3165, 54, 502, "Output",ExpressionUUID->"3d17bbdc-20e6-47b2-8426-d40546cf5e52"],
+Cell[82055, 2130, 3071, 53, 484, "Output",ExpressionUUID->"a7b905ea-c535-4a19-abe2-87f0c45cbe18"],
+Cell[85129, 2185, 3067, 53, 484, "Output",ExpressionUUID->"933f99ce-6c45-433e-b4a0-c4d03037ef29"],
+Cell[88199, 2240, 3148, 53, 484, "Output",ExpressionUUID->"972528e7-0321-41e2-a573-9393500961e5"],
+Cell[91350, 2295, 3056, 52, 484, "Output",ExpressionUUID->"1d01abbd-c003-4a2b-b4e5-8e45a0d3c839"],
+Cell[94409, 2349, 3083, 53, 484, "Output",ExpressionUUID->"5a6e6c03-f1e4-486e-a3b5-a490e6eacb88"],
+Cell[97495, 2404, 3166, 54, 502, "Output",ExpressionUUID->"0c8bbad1-599a-47ed-989a-5b830f7eb758"],
+Cell[100664, 2460, 3070, 53, 484, "Output",ExpressionUUID->"679e732c-b1f3-4323-a024-55b882ca2661"],
+Cell[103737, 2515, 3141, 53, 484, "Output",ExpressionUUID->"fedd8da3-ab10-4b83-b90c-202f594ea27a"],
+Cell[106881, 2570, 3293, 57, 520, "Output",ExpressionUUID->"fd796535-2dc9-406a-8a4e-f7f9e288d3d4"],
+Cell[110177, 2629, 3136, 53, 484, "Output",ExpressionUUID->"9c131259-7f61-4320-ab8b-66de9e29d09d"],
+Cell[113316, 2684, 3043, 51, 466, "Output",ExpressionUUID->"32869ee8-cc46-4fe6-af9c-6ed0bf003393"],
+Cell[116362, 2737, 3296, 55, 502, "Output",ExpressionUUID->"e59e2a3b-0a8b-4de7-a3fd-9d201396e956"],
+Cell[119661, 2794, 3034, 51, 466, "Output",ExpressionUUID->"544704b0-9745-433c-9d43-bf6852e25b49"]
+}, Open  ]],
+Cell[122710, 2848, 6010, 159, 304, "Input",ExpressionUUID->"14a32edf-297d-459d-87fa-0c4253d1d1be"]
+}
+]
+*)
+

@@ -44,8 +44,7 @@ while_loop <- function(ssrm,hsr,ssr,ha,sa,sy,d,
                        XSRm=XSRm,XSRf=XSRf,Asupm=Asupm,Asupf=Asupf,Ysup=Ysup)
   
   
-  while(!is.na(results) &&
-        t<t_final &&
+  while(t<t_final &&
         !(q1+q2+q3+q4+q5+q6+q7+q8+q9+q10+q11+q12 == 0)) {
     
     u1 = v1 = 1

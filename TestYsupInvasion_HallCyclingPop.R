@@ -12,8 +12,8 @@ Hall_Region4 <- data.frame(ssrm=numeric(),
                            hsr=numeric(),
                            d=numeric())
 
-for(ssr in seq(0.1,0.4,0.1)) {
-  for(sy in seq(0.1,0.5,0.1)) {
+for(ssr in seq(0.1,0.4,0.01)) {
+  for(sy in seq(0.1,0.5,0.01)) {
     
     ssrm = 0
     hsr = 3/5
@@ -24,8 +24,8 @@ for(ssr in seq(0.1,0.4,0.1)) {
   }
 }
 
-for(ssr in seq(0.1,0.2,0.1)) {
-  for(sy in seq(0.1,0.3,0.1)) {
+for(ssr in seq(0.1,0.2,0.01)) {
+  for(sy in seq(0.1,0.3,0.01)) {
     
     ssrm = 0
     hsr = 3/5
@@ -36,8 +36,8 @@ for(ssr in seq(0.1,0.2,0.1)) {
   }
 }
 
-for(ssr in seq(0.1,0.3,0.1)) {
-  for(sy in seq(0.1,0.7,0.1)) {
+for(ssr in seq(0.1,0.3,0.01)) {
+  for(sy in seq(0.1,0.7,0.01)) {
     
     ssrm = 0
     hsr = 2/5
@@ -48,8 +48,8 @@ for(ssr in seq(0.1,0.3,0.1)) {
   }
 }
 
-for(ssr in seq(0.1,0.1,0.1)) {
-  for(sy in seq(0.1,0.3,0.1)) {
+for(ssr in seq(0.1,0.1,0.01)) {
+  for(sy in seq(0.1,0.3,0.01)) {
     
     ssrm = 0
     hsr = 2/5
@@ -60,8 +60,8 @@ for(ssr in seq(0.1,0.1,0.1)) {
   }
 }
 
-for(ssr in seq(0.1,0.2,0.1)) {
-  for(sy in seq(0.4,0.7,0.1)) {
+for(ssr in seq(0.1,0.2,0.01)) {
+  for(sy in seq(0.4,0.7,0.01)) {
     
     ssrm = 0
     hsr = 0

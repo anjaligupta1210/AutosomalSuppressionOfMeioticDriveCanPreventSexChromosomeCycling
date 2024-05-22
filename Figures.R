@@ -16,32 +16,15 @@ library(readr)
 
 
 #Locate Datasets
-Data <- read_csv("YsupInvasion_AsupPresentInInitialPop.csv")
-Data_wo_A <- read_csv("YsupInvasion_AsupAbsentInInitialPop.csv")
-RevSims_GrandAll <- read_csv("AsupInvasion_EqbmPop.csv")
+Data <- read_csv("YsupInvasion_AsupPresentInInitialPop_Fig1-2_S1-5.csv")
+Data_wo_A <- read_csv("YsupInvasion_AsupAbsentInInitialPop_Fig1-2_S1-5.csv")
+RevSims_GrandAll <- read_csv("AsupInvasion_EqbmPop_Fig3_S6-8.csv")
 filter_1 <- read_csv("StableCyclingSpaceToTestAsupInvasion.csv")
 CycData <- read_csv("TestYsupInvasion_HallRegionIV_CyclingPop.csv")
 FinCycData <- read_csv("FinitePopSizeForCyclingPop.csv")
 
 
 #Checking the inequalities for scenario A
-Data$`sy>2d` <- ifelse(Data$sy>(2*Data$d), "1", "0")
-table(Data$`sy>2d`, Data$YInvade)
-
-Data$`ssr>2d` <- ifelse(Data$ssr>=(2*Data$d), "1", "0")
-Data$`sy>ssr` <- ifelse(Data$sy>Data$ssr, "1", "0")
-table(Data$`ssr>2d`, Data$`sy>ssr`, Data$YInvade)
-
-Data$`ssr>` <- -(Data$d/(-1 - 2*Data$d + Data$hsr + Data$d*Data$hsr))
-Data$`ssr<...` <- ifelse(Data$ssr<Data$`ssr>`, "1", "0")
-Data$`sy<2d` <- ifelse(Data$sy<(2*Data$d), "1", "0")
-table(Data$`sy<2d`, Data$`ssr<...`, Data$YInvade)
-
-Data_wo_A$`ssr>` <- -(Data_wo_A$d/(-1 - 2*Data_wo_A$d + Data_wo_A$hsr + Data_wo_A$d*Data_wo_A$hsr))
-Data_wo_A$`ssr<...` <- ifelse(Data_wo_A$ssr<Data_wo_A$`ssr>`, "1", "0")
-Data_wo_A$`sy<2d` <- ifelse(Data_wo_A$sy<(2*Data_wo_A$d), "1", "0")
-table(Data_wo_A$`sy<2d`,Data_wo_A$`ssr<...`, Data_wo_A$YInvade)
-
 Data$`ssr>2d` <- ifelse(Data$ssr>=(2*Data$d), "1", "0")
 Data$`sy>ssr` <- ifelse(Data$sy>Data$ssr, "1", "0")
 table(Data$`ssr>2d`, Data$`sy>ssr`, Data$YInvade)
@@ -75,17 +58,18 @@ Data1_woA <- subset(Data_wo_A,
                       ssrm==0 &
                       sy %in% c(0.1,0.5,0.9))
 
-Data_Fig1 <- merge(Data1, Data1_woA, by=c("ssrm", "hsr", "ssr", "ha", "sy", "d"))
+Data_Fig1 <- merge(Data1, Data1_woA, by=c("ssrm", "hsr", "ssr", "ha", "sa", "sy", "d"),
+                   all.x = TRUE)
 
 Data_Fig1$YsupInvade <- paste0(Data_Fig1$YInvade.x,Data_Fig1$YInvade.y)
 
-Data_Fig1$`Can Y-SUP invade?` <- ifelse(Data_Fig1$YsupInvade=="NoNo", "No",
-                                        ifelse(Data_Fig1$YsupInvade=="NoYes", "Yes only when A-SUP is absent",
-                                               ifelse(Data_Fig1$YsupInvade=="YesYes", "Always yes", NA)))
+Data_Fig1$`Can Y-SUP invade?` <- ifelse(Data_Fig1$YsupInvade%in%c("NoNo"), "Never",
+                                        ifelse(Data_Fig1$YsupInvade%in%c("NoYes","NoNA"), "No when A-SUP is present",
+                                               ifelse(Data_Fig1$YsupInvade%in%c("YesYes","YesNA"), "Yes", NA)))
 
-Data_Fig1$`Can Y-SUP invade?` <- factor(Data_Fig1$`Can Y-SUP invade?`, levels = c("No",
-                                                                                  "Always yes",
-                                                                                  "Yes only when A-SUP is absent"))
+Data_Fig1$`Can Y-SUP invade?` <- factor(Data_Fig1$`Can Y-SUP invade?`, levels = c("Never",
+                                                                                  "Yes",
+                                                                                  "No when A-SUP is present"))
 
 Data_Fig1$`Cost of Y-SUP` <- Data_Fig1$sy
 
@@ -280,32 +264,8 @@ Sub5 <- subset(CycData_plot, ssrm == 0 &
 
 
 
-f5 <- ggplot(subset(Sub5,
-                    ha==0), aes(x=ssr,
-                                y=sy,
-                                fill=as.factor(Scenario_1))) +
-  geom_tile() +
-  facet_grid(~`sa sy`) +
-  coord_cartesian(xlim = c(0,1),
-                  ylim = c(0,1)) +
-  theme_bw() +
-  scale_fill_manual(values=wes_palette("GrandBudapest1")) +
-  theme(legend.position = "bottom",
-        strip.background = element_blank(),
-        strip.text = element_text(size = 20),
-        axis.text = element_text(size = 20),
-        axis.title = element_text(size = 30, face = "bold"),
-        title = element_text(size = 20),
-        legend.text = element_text(size = 20),
-        legend.title = element_text(size = 20)) +
-  ggtitle(paste("ssrm",Sub5$ssrm[1], "hsr",Sub5$hsr[1], "ha",Sub5$ha[1], "d",Sub5$d[1])) +
-  labs(x = "Cost of driver in females",
-       y = "Cost of Y-SUP",
-       fill = "")
-
-
 f4 <- ggplot(subset(Sub4,
-                    ha==0), aes(x=ssr,
+                    ha==0.5), aes(x=ssr,
                                 y=sy,
                                 fill=as.factor(Scenario_1))) +
   geom_tile() +
@@ -327,10 +287,10 @@ f4 <- ggplot(subset(Sub4,
        y = "Cost of Y-SUP",
        fill = "")
 
-f3 <- ggplot(subset(Sub3,
-                    ha==0), aes(x=ssr,
-                                y=sy,
-                                fill=as.factor(Scenario_1))) +
+f1 <- ggplot(subset(Sub1,
+                    ha==0.5), aes(x=ssr,
+                                  y=sy,
+                                  fill=as.factor(Scenario_1))) +
   geom_tile() +
   facet_grid(~`sa sy`) +
   coord_cartesian(xlim = c(0,1),
@@ -345,15 +305,14 @@ f3 <- ggplot(subset(Sub3,
         title = element_text(size = 20),
         legend.text = element_text(size = 20),
         legend.title = element_text(size = 20)) +
-  ggtitle(paste("ssrm",Sub3$ssrm[1], "hsr",Sub3$hsr[1], "ha",Sub3$ha[1], "d",Sub3$d[1])) +
+  ggtitle(paste("ssrm",Sub1$ssrm[1], "hsr",Sub1$hsr[1], "ha",Sub1$ha[1], "d",Sub1$d[1])) +
   labs(x = "Cost of driver in females",
        y = "Cost of Y-SUP",
        fill = "")
 
-
-Figure4 <- ggarrange(f3,f4,f5, common.legend = TRUE, labels = "AUTO",
+Figure4 <- ggarrange(f1,f4, common.legend = TRUE, labels = "AUTO",
                      font.label = list(size = 30, face = "bold"),
-                     ncol = 1, nrow = 3)
+                     ncol = 1, nrow = 2)
 
 Figure4
 
@@ -388,7 +347,7 @@ Sup_1a <- ggplot(subset(Data, ha==0 &
                             sa ==0.5 &
                             sy %in% c(0.1,0.5,0.9) &
                             YInvade == "Yes"), label = "*", color = "black",
-            size = 5, show.legend = FALSE) +
+            size = 3, show.legend = FALSE) +
   coord_cartesian(xlim = c(0,1),
                   ylim = c(0,0.5)) +
   theme(axis.title = element_text(size = 20, face = "bold"),
@@ -420,7 +379,7 @@ Sup_1b <- ggplot(subset(Data_wo_A,
                             ssrm==0 &
                             sy %in% c(0.1,0.5,0.9) &
                             YInvade == "Yes"), label = "*", color = "black",
-            size = 5, show.legend = FALSE) +
+            size = 3, show.legend = FALSE) +
   coord_cartesian(xlim = c(0,1),
                   ylim = c(0,0.5)) +
   theme(axis.title = element_text(size = 20, face = "bold"),
@@ -452,7 +411,7 @@ FigureS2 <- ggplot(subset(Data,
                aes(x=as.numeric(XSRmmid),
                    y=as.numeric(Asupmmid),
                    color=as.factor(YInvade))) +
-  geom_point(size = 3) +
+  geom_point(size = 0.5) +
   coord_cartesian(xlim = c(0,1),
                   ylim = c(0,1)) +
   theme_classic() +
@@ -480,22 +439,26 @@ FigureS2
 DataS2 <- subset(Data, ha==0 &
                    ssrm==0 &
                    sa==0.5 &
-                   sy %in% c(0.1,0.5))
+                   sy %in% c(0.1))
 DataS2_woA <- subset(Data_wo_A,
-                     ssrm==0 &
-                       sy %in% c(0.1,0.5))
+                     ha==0 &
+                       ssrm==0 &
+                       sa==0.5 &
+                       sy %in% c(0.1))
 
-Data_FigS2 <- merge(DataS2, DataS2_woA, by=c("ssrm", "hsr", "ssr", "ha", "sy", "d"))
+Data_FigS2 <- merge(DataS2, DataS2_woA, by=c("ssrm", "hsr", "ssr", "ha", "sy", "d", "sa"),
+                    all = TRUE)
 
 Data_FigS2$YsupInvade <- paste0(Data_FigS2$YInvade.x,Data_FigS2$YInvade.y)
 
-Data_FigS2$`Can Y-SUP invade?` <- ifelse(Data_FigS2$YsupInvade=="NoNo", "No",
-                                         ifelse(Data_FigS2$YsupInvade=="NoYes", "Yes only when A-SUP is absent",
-                                                ifelse(Data_FigS2$YsupInvade=="YesYes", "Always yes", NA)))
 
-Data_FigS2$`Can Y-SUP invade?` <- factor(Data_FigS2$`Can Y-SUP invade?`, levels = c("No",
-                                                                                    "Always yes",
-                                                                                    "Yes only when A-SUP is absent"))
+Data_FigS2$`Can Y-SUP invade?` <- ifelse(Data_FigS2$YsupInvade=="NoNo", "Never",
+                                         ifelse(Data_FigS2$YsupInvade%in%c("NoYes","NoNA"), "No when A-SUP is present",
+                                                ifelse(Data_FigS2$YsupInvade%in%c("YesYes","YesNA"), "Yes", NA)))
+
+Data_FigS2$`Can Y-SUP invade?` <- factor(Data_FigS2$`Can Y-SUP invade?`, levels = c("Never",
+                                                                                    "Yes",
+                                                                                    "No when A-SUP is present"))
 
 Data_FigS2$`Cost of Y-SUP` <- Data_FigS2$sy
 
@@ -652,7 +615,7 @@ FigureS6 <- ggplot(subset(RevSims_GrandAll,
                             AsupInvade=="Yes"), 
             label = "+", 
             color = "black",
-            size = 5, 
+            size = 2, 
             show.legend = FALSE) +
   theme_classic() +
   labs(x="Cost of driver in females",
@@ -686,7 +649,7 @@ FigureS7 <- ggplot(subset(RevSims_GrandAll,
                          sa %in% c(0,0.5,1)), aes(x=XSRmmid,
                                                   y=Ysupmid,
                                                   color=as.factor(AsupInvade))) +
-  geom_point() +
+  geom_point(size = 0.5) +
   facet_grid(`Cost of A-SUP`~`Cost of Y-SUP`, labeller = my_labeller) +
   theme_classic() +
   labs(x="Equilibrium frequency of X-SR in males",

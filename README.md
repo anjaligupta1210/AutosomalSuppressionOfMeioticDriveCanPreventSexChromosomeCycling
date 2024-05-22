@@ -22,6 +22,7 @@ EffectOfPopulationSize - TestIfCyclingPeristsUnderFinitePopSize.R
 Simulations were run separately for some of the figures -
 
 Figure1,2,S1,S2,S3,S4,S5 - TestYsupInvasion_InitialPopDoesNotHaveAsup_Fig1-2_S1-5.R & TestYsupInvasion_InitialPopHasAsup_Fig1-2_S1-5.R
+
 Figure3,S6,S7,S8 - TestAsupInvasion_EqbmPop_Fig3_S6-8.R
 
 
@@ -47,6 +48,7 @@ EffectofPopulationSize - FinitePopSizeForCyclingPop.csv
 Data from simulations were run separately for some of the figures -
 
 Figure1,2,S1,S2,S3,S4,S5 - YsupInvasion_AsupAbsentInInitialPop_Fig1-2_S1-5.csv.zip & YsupInvasion_AsupPresentInInitialPop_Fig1-2_S1-5.csv.zip (Unzip .zip file)
+
 Figure3,S6,S7,S8 - AsupInvasion_EqbmPop_Fig3_S6-8.csv
 
 

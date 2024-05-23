@@ -1,11 +1,10 @@
-# AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling
 
-## **Data and Code for Autosomal suppression of meiotic drive can prevent sex chromosome cycling**
+# **Data and Code for Autosomal suppression of meiotic drive can prevent sex chromosome cycling**
 
-### All Figures are coded in [Figures.R](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/Figures.R)
+## All Figures are coded in [Figures.R](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/Figures.R)
 
 
-### Simulations are in ``TestXXXXX.R``
+## Simulations are in ``TestXXXXX.R``
 
 
 

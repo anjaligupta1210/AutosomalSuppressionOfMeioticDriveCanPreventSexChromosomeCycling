@@ -12,7 +12,7 @@
 
 
 
-== ### 1. Simulation filenames based on scenarios presented in paper:==
+### <mark>1. Simulation filenames based on scenarios presented in paper:</mark>
 
 - **ScenarioA** - [TestYsupInvasion_InitialPopDoesNotHaveAsup.R](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/TestYsupInvasion_InitialPopDoesNotHaveAsup.R) & [TestYsupInvasion_InitialPopHasAsup.R](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/TestYsupInvasion_InitialPopHasAsup.R)
 
@@ -28,7 +28,7 @@
 
 
 
-== ### 2. Simulations were run separately for some of the figures -==
+### <mark> 2. Simulations were run separately for some of the figures -</mark>
 
 - **Figure1,2,S1,S2,S3,S4,S5** - [TestYsupInvasion_InitialPopDoesNotHaveAsup_Fig1-2_S1-5.R](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/TestYsupInvasion_InitialPopDoesNotHaveAsup_Fig1-2_S1-5.R) & [TestYsupInvasion_InitialPopHasAsup_Fig1-2_S1-5.R](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/TestYsupInvasion_InitialPopHasAsup_Fig1-2_S1-5.R)
 
@@ -41,14 +41,14 @@
 
 
 
-== ### 3. Mathematica file for the recursions for our model is [ModelRecursionEquations.nb](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/ModelRecursionEquations.nb)==
+### <mark> 3. Mathematica file for the recursions for our model is [ModelRecursionEquations.nb](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/ModelRecursionEquations.nb)</mark>
 
 
 
 
-== ### 4. Data from simulations is in ``XXXXXPop.csv``==
+### <mark>  4. Data from simulations is in ``XXXXXPop.csv``</mark>
 
-	**Dataset filenames based on scenarios presented in paper:**
+**Dataset filenames based on scenarios presented in paper:**
 
 - **ScenarioA** - [YsupInvasion_AsupAbsentInInitialPop.csv](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/YsupInvasion_AsupAbsentInInitialPop.csv) & [YsupInvasion_AsupPresentInInitialPop.csv](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/YsupInvasion_AsupPresentInInitialPop.csv.zip) (Unzip .zip file)
 
@@ -62,7 +62,7 @@
 
 
 
-== ### 5. Data from simulations were run separately for some of the figures -==
+### <mark> 5. Data from simulations were run separately for some of the figures -</mark>
 
 - **Figure1,2,S1,S2,S3,S4,S5** - [YsupInvasion_AsupAbsentInInitialPop_Fig1-2_S1-5.csv](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/YsupInvasion_AsupAbsentInInitialPop_Fig1-2_S1-5.csv.zip) & [YsupInvasion_AsupPresentInInitialPop_Fig1-2_S1-5.csv](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/YsupInvasion_AsupPresentInInitialPop_Fig1-2_S1-5.csv.zip) (Unzip .zip files)
 
@@ -70,15 +70,15 @@
 
 
 
-== ### 6. R script to verify that we get the same cycling behavior as Hall 2004 in our model:== [Hall2004CyclingParameterSpace.R](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/Hall2004CyclingParameterSpace.R)
+### <mark> 6. R script to verify that we get the same cycling behavior as Hall 2004 in our model:</mark> [Hall2004CyclingParameterSpace.R](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/Hall2004CyclingParameterSpace.R)
 
 
 
-== ### 7. Plots to verify that we get the same cycling behavior as Hall 2004 in our model:== [Hall2004CyclingParameterSpace.pdf](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/Hall2004CyclingParameterSpace.pdf)
+### <mark> 7. Plots to verify that we get the same cycling behavior as Hall 2004 in our model:</mark> [Hall2004CyclingParameterSpace.pdf](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/Hall2004CyclingParameterSpace.pdf)
 
 
 
-== ### 8. Mathematica file for the verification of reduced version of our model to Wu1983 is== [ModelRecursionEquations_ReductionToWuModel.nb](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/ModelRecursionEquations_ReductionToWuModel.nb)
+### <mark> 8. Mathematica file for the verification of reduced version of our model to Wu1983 is</mark> [ModelRecursionEquations_ReductionToWuModel.nb](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/ModelRecursionEquations_ReductionToWuModel.nb)
 
 
-== ### 9. Mathematica file for the verification of reduced version of our model to Hall2004 is== [ModelRecursionEquations_ReductionToHallModel.nb](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/ModelRecursionEquations_ReductionToHallModel.nb)
+### <mark> 9. Mathematica file for the verification of reduced version of our model to Hall2004 is</mark> [ModelRecursionEquations_ReductionToHallModel.nb](https://github.com/anjaligupta1210/AutosomalSuppressionOfMeioticDriveCanPreventSexChromosomeCycling/blob/main/ModelRecursionEquations_ReductionToHallModel.nb)

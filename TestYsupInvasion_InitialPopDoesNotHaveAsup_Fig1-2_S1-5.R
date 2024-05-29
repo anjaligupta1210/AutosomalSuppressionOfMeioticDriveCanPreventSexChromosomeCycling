@@ -7,9 +7,9 @@
 # The while loop function simulates the dynamics of a population of a X-linked sex-ratio meiotic drive gene with Y-linked and autosomal suppressors over time.
 
 # Parameters:
-#   ssrm: Fitness cost of sex-ratio drive gene in males 
-#   hsr: Dominance of cost of drive in females
-#   ssr: Fitness cost of sex-ratio drive gene in females
+#   sdm = ssrm: Fitness cost of sex-ratio drive gene in males 
+#   hd = hsr: Dominance of cost of drive in females
+#   sdf = ssr: Fitness cost of sex-ratio drive gene in females
 #   ha: Dominance of cost of autosomal suppressor
 #   sa: Fitness cost of autosomal suppressor
 #   sy: Fitness cost of Y-linked suppressor
@@ -18,11 +18,11 @@
 #   q1, q2, q3, ..., q12: Genotypic frequencies in males
 #   t: Start time (in generations)
 #   t_final: End time (in generations)
-#   XSRm: Allelic frequency of driving X in males
-#   XSRf: Allelic frequency of driving X in females
-#   Asupm: Allelic frequency of autosomal suppressor in males
-#   Asupf: Allelic frequency of autosomal suppressor in females 
-#   Ysup: Allelic frequency of Y-linked suppressor
+#   Xdm = XSRm: Allelic frequency of driving X in males
+#   Xdf = XSRf: Allelic frequency of driving X in females
+#   Asm = Asupm: Allelic frequency of autosomal suppressor in males
+#   Asf = Asupf: Allelic frequency of autosomal suppressor in females 
+#   Ys = Ysup: Allelic frequency of Y-linked suppressor
 
 while_loop <- function(ssrm,hsr,ssr,ha,sa,sy,d,
                        p1,p2,p3,p4,p5,p6,p7,p8,p9,

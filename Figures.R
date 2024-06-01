@@ -540,7 +540,107 @@ FigureS4
 
 ## Figure S5
 
-Sup_5a <-ggplot(subset(Data,hsr==0 &
+
+Fig_S5a <-ggplot(subset(Data, ha==0 &
+                          hsr==0 &
+                          ssrm==0 &
+                          sa==0.5 &
+                          sy==0.1 &
+                          YInvade=="Yes"), aes(x=ssr,
+                                               y=d,
+                                               fill=as.numeric(`Relative reduction in equilibrium frequency of X-SR in males`))) +
+  geom_tile() +
+  facet_grid(~YStable, labeller = my_labeller) +
+  theme_classic() +
+  labs(x="Cost of driver in females",
+       y="Strength of drive",
+       fill="") +
+  scale_fill_gradient(low="#FAD77B", high= "#FD6467",
+                      limits=c(0,1)) +
+  coord_cartesian(xlim = c(0,1),
+                  ylim = c(0,0.5)) +
+  theme(axis.title = element_text(size = 18, face = "bold"),
+        legend.title = element_text(size = 12, face = "bold"),
+        axis.text = element_text(size = 20),
+        legend.text = element_text(size = 10, face = "bold"),
+        legend.position = "none",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 12, face = "bold"),
+        title = element_text(size = 18, face = "bold")) +
+  ggtitle("Relative reduction in equilibrium frequency of driving X")
+
+Fig_S5b <- ggplot(subset(Data, ha==0 &
+                           hsr==0 &
+                           ssrm==0 &
+                           sa==0.5 &
+                           sy==0.1 &
+                           YInvade=="Yes"), aes(x=ssr,
+                                                y=d,
+                                                fill=as.numeric(XSRmmid))) +
+  facet_grid(~YStable, labeller = my_labeller) +
+  geom_tile() +
+  theme_classic() +
+  labs(x="Cost of driver in females",
+       y="Strength of drive",
+       fill="") +
+  scale_fill_gradient(low="#FAD77B", high= "#FD6467",
+                      limits=c(0,1)) +
+  coord_cartesian(xlim = c(0,1),
+                  ylim = c(0,0.5)) +
+  theme(axis.title = element_text(size = 18, face = "bold"),
+        legend.title = element_text(size = 12, face = "bold"),
+        axis.text = element_text(size = 20),
+        legend.text = element_text(size = 10, face = "bold"),
+        legend.position = "none",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 12, face = "bold"),
+        title = element_text(size = 18, face = "bold")) +
+  ggtitle("Frequency of driving X in males before invasion")
+
+Fig_S5c <- ggplot(subset(Data, ha==0 &
+                           hsr==0 &
+                           ssrm==0 &
+                           sa==0.5 &
+                           sy==0.1 &
+                           YInvade=="Yes"), aes(x=ssr,
+                                                y=d,
+                                                fill=as.numeric(XSRm))) +
+  facet_grid(~YStable, labeller = my_labeller) +
+  geom_tile() +
+  theme_classic() +
+  labs(x="Cost of driver in females",
+       y="Strength of drive",
+       fill="") +
+  scale_fill_gradient(low="#FAD77B", high= "#FD6467",
+                      limits=c(0,1)) +
+  coord_cartesian(xlim = c(0,1),
+                  ylim = c(0,0.5)) +
+  theme(axis.title = element_text(size = 18, face = "bold"),
+        legend.title = element_text(size = 12, face = "bold"),
+        axis.text = element_text(size = 20),
+        legend.text = element_text(size = 10, face = "bold"),
+        legend.position = "none",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 12, face = "bold"),
+        title = element_text(size = 18, face = "bold")) +
+  ggtitle("Frequency of driving X in males after invasion")
+
+FigureS5 <- ggarrange(Fig_S5a, Fig_S5b, Fig_S5c, nrow = 3,
+                      labels = "AUTO",
+                      legend = "bottom",
+                      common.legend = TRUE,
+                      hjust = 0, vjust = c(1,0.5),
+                      font.label = list(size = 28, face = "bold"))
+
+FigureS5
+
+
+
+
+
+## Figure S6
+
+Sup_6a <-ggplot(subset(Data,hsr==0 &
                          ssrm==0 &
                          sa==0.1 &
                          sy==0.1 &
@@ -566,7 +666,7 @@ Sup_5a <-ggplot(subset(Data,hsr==0 &
         strip.background = element_blank(),
         strip.text = element_text(size = 20))
 
-Sup_5b <- ggplot(subset(Data,hsr==0 &
+Sup_6b <- ggplot(subset(Data,hsr==0 &
                           ssrm==0 &
                           sa==0.1 &
                           sy==0.1 &
@@ -592,19 +692,19 @@ Sup_5b <- ggplot(subset(Data,hsr==0 &
         strip.background = element_blank(),
         strip.text = element_text(size = 20))
 
-FigureS5 <- ggarrange(Sup_5a, Sup_5b, nrow = 2,
+FigureS6 <- ggarrange(Sup_6a, Sup_6b, nrow = 2,
                   labels = "AUTO",
                   common.legend = TRUE,
                   legend = "bottom",
                   hjust = 0, vjust = c(1,0.5),
                   font.label = list(size = 28, face = "bold"))
 
-FigureS5
+FigureS6
 
 
 
 
-## Figure S6
+## Figure S7
 
 RevSims_GrandAll$`Female_mid` <- rowSums(RevSims_GrandAll[9:17])
 RevSims_GrandAll$`Male_mid` <- rowSums(RevSims_GrandAll[18:29])
@@ -613,7 +713,7 @@ RevSims_GrandAll$all <- RevSims_GrandAll$Female_mid + RevSims_GrandAll$Male_mid
 
 RevSims_GrandAll$Female_mid <- as.numeric(RevSims_GrandAll$Female_mid)
 
-FigureS6 <- ggplot(subset(RevSims_GrandAll,
+FigureS7 <- ggplot(subset(RevSims_GrandAll,
               ha==0 &
                 hsr==0 &
                 ssrm==0 &
@@ -652,13 +752,13 @@ FigureS6 <- ggplot(subset(RevSims_GrandAll,
         strip.background = element_blank(),
         strip.text = element_text(size = 14))
 
-FigureS6
+FigureS7
 
 
 
-## Figure S7
+## Figure S8
 
-FigureS7 <- ggplot(subset(RevSims_GrandAll,
+FigureS8 <- ggplot(subset(RevSims_GrandAll,
                        ha==0 &
                          hsr==0 &
                          ssrm==0 &
@@ -682,11 +782,11 @@ FigureS7 <- ggplot(subset(RevSims_GrandAll,
         strip.background = element_blank(),
         strip.text = element_text(size = 20))
 
-FigureS7
+FigureS8
 
 
 
-## Figure S8
+## Figure S9
 
 RevSims_GrandAll$Ysup <- round(as.numeric(RevSims_GrandAll$Ysup), digits = 3)
 RevSims_GrandAll$Ysupmid <- round(as.numeric(RevSims_GrandAll$Ysupmid), digits = 3)
@@ -757,17 +857,17 @@ Red_XSR <- ggplot(subset(Yes, ha==0 &
         strip.background = element_blank(),
         strip.text = element_text(size = 20))
 
-FigureS8 <- ggarrange(Red_YSUP,Red_XSR,
+FigureS9 <- ggarrange(Red_YSUP,Red_XSR,
                       labels = "AUTO",
                       font.label = list(size = 30, face = "bold"),
                       nrow=1, ncol = 2)
 
-FigureS8
+FigureS9
 
 
 
 
-## Figure S9
+## Figure S10
 
 filter <- filter_1[c(773,786,840,841,845,856),2:8]
 
@@ -1123,7 +1223,7 @@ for(i in 1:nrow(filter)) {
 }
 
 
-FigureS9 <- ggarrange(plots[[1]],
+FigureS10 <- ggarrange(plots[[1]],
                    plots[[2]],
                    plots[[3]],
                    plots[[4]],
@@ -1132,12 +1232,12 @@ FigureS9 <- ggarrange(plots[[1]],
                    nrow = 3, ncol = 2,
                    labels = "AUTO")
 
-FigureS9
+FigureS10
 
 
 
 
-## Figure S10
+## Figure S11
 
 Sub1 <- subset(FinCycData, ssrm == 0 &
                  hsr == 3/5 &
@@ -1262,8 +1362,8 @@ s5 <- ggplot(Sub5, aes(x=ssr,
   ggtitle(paste("ssrm =",Sub5$ssrm[1], "hsr =",Sub5$hsr[1], "ha =",Sub5$ha[1], "d =",Sub5$d[1]))
 
 
-FigureS10 <- ggarrange(s3,s2,s1,s4,s5, common.legend = TRUE, labels = "AUTO",
+FigureS11 <- ggarrange(s3,s2,s1,s4,s5, common.legend = TRUE, labels = "AUTO",
                        font.label = list(size = 30, face = "bold"),
                        ncol = 2, nrow = 3)
 
-FigureS10
+FigureS11

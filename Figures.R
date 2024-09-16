@@ -33,8 +33,8 @@ library(readr)
 
 
 #Locate Datasets
-Data <- read_csv("YsupInvasion_AsupPresentInInitialPop_Fig1-2_S1-5.csv")
-Data_wo_A <- read_csv("YsupInvasion_AsupAbsentInInitialPop_Fig1-2_S1-5.csv")
+Data <- read_csv("YsupInvasion_AsupPresentInInitialPop_Fig1-2_S1-5.csv.zip")
+Data_wo_A <- read_csv("YsupInvasion_AsupAbsentInInitialPop_Fig1-2_S1-5.csv.zip")
 RevSims_GrandAll <- read_csv("AsupInvasion_EqbmPop_Fig3_S6-8.csv")
 filter_1 <- read_csv("StableCyclingSpaceToTestAsupInvasion.csv")
 CycData <- read_csv("TestYsupInvasion_HallRegionIV_CyclingPop.csv")
